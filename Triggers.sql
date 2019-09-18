@@ -1,7 +1,6 @@
 --TRIGGERS
 -- Create a main table and log/audit table
 
--- DML TRiggers
 select * from tblEmployee
 
 CREATE TABLE tblEmployeeAudit
@@ -13,32 +12,51 @@ select * from tblEmployeeAudit
 
 -- AFTER/FOR INSERT TRIGGER
 
+CREATE TRIGGER <tr_tblEmployee_ForInsert>
+ON <table>
+FOR <INSERT,DELETE,UPDATE>
+AS 
+BEGIN
+
+/* scripting component */
+
+END
+
+--- AFTER/FOR INSERT TRIGGER
 ALTER TRIGGER tr_tblEMployee_ForInsert
 ON tblEmployee
 FOR INSERT
 AS
 BEGIN
 --- Define certain varriables so that it can hold up the values
- Declare @Id int
- DECLARE @name nvarchar(100)
- --- fetch the values from intermediate tables / MAGIC TABLES
- Select @Id = Id from inserted
- select @name = name from inserted
+ Declare @Id int   ---- to hold up newly created ID
+ DECLARE @name nvarchar(100)   ---- to hold up newly inserted name
  
- select * from inserted 
+ --- fetch the values from intermediate tables / MAGIC TABLES   --- fixed name tables
+ ---- INSERTED & DELETED
+ ---- by default these tables will pick up the schema of table on which you wanted to create a TRIGGER 
+ 
+  Select @Id = Id from inserted
+  select @name = name from inserted
+  select * from inserted 
  --select * from deleted 
 
  insert into tblEmployeeAudit 
  values('New employee with Id  = ' + Cast(@Id as nvarchar(5)) +   'and name as ' + @name   + ' is added at ' + cast(Getdate() as nvarchar(20)))
+
 END	
 
 select * from tblEmployee
+select * from tbldepartment
 select * from tblEmployeeAudit
 delete from tblEmployeeAudit
-Insert into tblEmployee values (29,'jeannie', 'Female',2598, 3)
+Insert into tblEmployee values (31,'Hughie', 'Male',5500, 3)
+INSERT INTO tbldepartment values(6,'security','Frankfurt',NULL)
 delete from tblEmployee where id = 16
 
+select 'My Age is' + CAST( 5 as varchar(3))
 
+--select * from inserted 
 
 
 update tblEmployee
@@ -54,14 +72,6 @@ select * from tblEmployee
 select * from tblEmployeeAudit
 Insert into tblEmployee values (15,'Tan', 'Female',2300, 3)
 
-
-create
-
-
-
-
-
-
 -- AFTER/FOR DELETE TRIGGER
 CREATE TRIGGER tr_tblEMployee_ForDelete
 ON tblEmployee
@@ -76,7 +86,7 @@ BEGIN
  print @id
 END
 -- showcase how the inserted and deleted tables are working
-delete from tblEmployee where id = 27
+delete from tblEmployee where id = 31
 select * from tblEmployeeAudit
 select * from tblEmployee where 
 
@@ -91,14 +101,14 @@ Begin
  Select * from inserted 
 End
 
-
-
 select * from tblEmployeeAudit
+select * from tblEmployee
 
+update 
 
 select * from tblEmployee
-Update tblEmployee set Name = 'Todss', Salary = 20000, 
-Gender = 'FeMale' where Id = 4
+Update tblEmployee set Name = 'TOM', Salary = 20000, 
+Gender = 'FeMale' where Id = 1
 
 drop trigger tr_tblEmployee_ForUpdate
 
@@ -127,6 +137,8 @@ Begin
       from inserted
      
       -- Loop thru the records in temp table
+
+	  -- EXISTS -- check the boolean values, whether record exists or not in a particular table.
       While(Exists(Select Id from #TempTable))
       Begin
             --Initialize the audit string to empty string
@@ -164,7 +176,18 @@ Begin
       End
 End
 
+
+
+
+
+
 select * from tblEmployee
+
+UPDATE tblEmployee
+set Salary = 25000,
+	Gender = 'Male'	
+	WHERE ID IN (13,15)
+
 
 select * from tblEmployeeAudit 
 
@@ -175,7 +198,9 @@ where id = 5
 
 
 ---- INSTEAD OF TRIGGERS
-
+/*
+If you want to execute DML syntax on another object/table instead of the designated object, you can use the INSTEAD OF triggers
+*/
 
 select * from tblEmp
 select * from tblDept
@@ -186,23 +211,23 @@ Select Id, Name, Gender, DeptName
 from tblEmp 
 join tblDept
 on tblEmp.DepartmentId = tblDept.DeptId
-
 -- view with multiple join of table will not insert data
 select * from vWEmployeeDetails
-Insert into vWEmployeeDetails values(30, 'Valarie', 'Female', 'IT')
+
+
+Insert into vWEmployeeDetails values(32, 'Valarie', 'Female', 'IT')
 
 select * from tblEmp
 select * from tbldept
 
 ---- INSTEAD OF INSERT TRIGGER ON THE VIEW, means instead of doing insertion on view what else we can do
-Create trigger tr_vWEmployeeDetails_InsteadOfInsert
+ALTER trigger tr_vWEmployeeDetails_InsteadOfInsert
 on vWEmployeeDetails
 Instead Of Insert
 as
 Begin
- Declare @DeptId int
- 
- --Check if there is a valid DepartmentId
+ /*Declare @DeptId int
+  --Check if there is a valid DepartmentId
  --for the given DepartmentName
  Select @DeptId = DeptId 
  from tblDept 
@@ -220,7 +245,9 @@ Begin
  --Finally insert into tblEmployee table
  Insert into tblEmp(Id, Name, Gender, DepartmentId)
  Select Id, Name, Gender, @DeptId
- from inserted
+ from inserted*/
+ print ' you are not allowed to insert the data via this object or view  '
+
 End
 
 -- INSTEAD OF DELETE TRIGGER
@@ -235,16 +262,9 @@ Begin
  join deleted
  on tblEmp.Id = deleted.Id
 
- --Subquery
- Delete from tblEmployee 
- where Id in (Select Id from deleted)
-End
-select * from vWEmployeeDetails
-delete from vwemployeedetails where id = 30
-select * from tblEmp
 
 
---- CREATE  A TRIGGER with INSTEAD OF UPDATE -- ASSIGNMENT -- will discuss tomorrow. 
+
 
 
 
