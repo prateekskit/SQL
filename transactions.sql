@@ -20,26 +20,45 @@ To get the errors from a system
 */ 
 
 
+select * from tblMailingAddress
+sp_help tblMailingAddress
+
 ALTER PROCEDURE spUpdateAddress
 as
 Begin
+----- 
  Begin Try
+ --- Beingingn of Transactions 
   Begin Transaction
-
-  
-   Update tblMailingAddress set City = 'LONDON LONDONASLDASDASDASDASDASDSADASD' 
+   
+   Update tblMailingAddress set City = 'LONDON' 
    where AddressId = 1 and EmployeeNumber = 101
    
-   Update tblPhysicalAddress set City = 'LONDON' 
-   where AddressId = 1 and EmployeeNumber = 101
-  Commit Transaction
+   Update tblPhysicalAddress set City = 'LONDON  LONDONASLDASDASDASDASDASDSADASD' 
+   where AddressId = 1 and EmployeeNumber = 101  -- directly from here, your scope will change and go to CATCH block
+   
+   print 'try completed'
+   select * from tblMailingAddress
+    Commit Transaction   --- 
+-- END TRY
  End Try
+ -- To CATCH the Errors/Exceptiosn
  Begin Catch
-  print 'in catch block'
+  print 'There is an issue with your syntax. Please check or connect with Administrator'
   Rollback Transaction
-
  End Catch
 End 
+
+---- syntax 
+BEGIN TRY
+	BEGIN TRAN
+	COMMIT TRAN
+END TRY
+BEGIN CATCH
+	ROLLBACK TRAN
+END CATCH
+
+
 exec spupdateAddress
 
 Alter Procedure spUpdateAddress
@@ -57,6 +76,10 @@ Begin
  Begin Catch
   Rollback Transaction
  End Catch
+
+
+
+
 End
 
 exec spUpdateAddress
@@ -297,7 +320,7 @@ Insert into tblDyn values ('Valarie', 'Vikings', 'Female', 35000)
 Insert into tblDyn values ('John', 'Stanmore', 'Male', 80000)
 Go
 
-Create Procedure spSearchEmployees
+ALTER Procedure spSearchEmployees
 @FirstName nvarchar(100),
 @LastName nvarchar(100),
 @Gender nvarchar(50),
@@ -314,7 +337,7 @@ End
 Go
 
 
-
+select * from tblDyn
 
 Declare @sql nvarchar(1000)
 Declare @params nvarchar(1000)
@@ -345,9 +368,11 @@ Begin
           Set @sql = @sql + ' and Gender=''' + @Gender + ''''
      if(@Salary is not null)
           Set @sql = @sql + ' and Salary=''' + @Salary + ''''
-	--	  print @sql
-     Execute sp_executesql @sql
+	 -- print @sql
+   Execute sp_executesql @sql
 End
 Go
 select * from tblDyn
+
+
 exec spSearchEmployeesBadDynamicSQL NULL,'Hastings',NULL,NULL
