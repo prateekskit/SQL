@@ -1,0 +1,2209 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/24/2019 7:09:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-FHAGM43B"
+  DTS:CreatorName="LAPTOP-FHAGM43B\payal jain"
+  DTS:DTSID="{72A829FA-D267-4F70-91F0-5C5AC44020B0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Lookup_Join"
+  DTS:PackageType="5"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{27B65578-266E-4563-BE88-1978979A31DC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Destination_DB2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A3C345DC-393F-489E-B437-2E18B53221BC}"
+      DTS:ObjectName="Destination_DB2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=db_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EmpTextFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{87570D44-23CB-4806-89BA-EC6BC0E5C94F}"
+      DTS:ObjectName="EmpTextFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\GIT\SQL\SSIS\Demo_1\sample_tab.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID"
+              DTS:DTSID="{648E1A4D-5617-4AF8-8D6E-980ABCFCF4AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{D456AA10-FF86-47A5-850E-92BB31EF3469}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{B0F4813C-F50B-48F4-A34E-1DBD6C20665A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Salary"
+              DTS:DTSID="{5D8047AC-9CE7-42F0-9BD3-07E85F212E75}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepartmentId"
+              DTS:DTSID="{A947563B-E6F4-43AD-888D-F9A4C6D5807A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EmployeetoEmp"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6CA96849-F994-4065-A558-3ACCA3568DAA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EmployeetoEmp"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\EmployeetoEmp\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="16393"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[EmpTextFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[EmpTextFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Salary]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Salary]"
+                      name="Salary"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[DepartmentId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DepartmentId]"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[DepartmentId]"
+                      name="DepartmentId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      dataType="i4"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DepartmentId]"
+                      dataType="i4"
+                      name="DepartmentId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[tblDepartment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[tblDepartment]) [refTable]
+where [refTable].[ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartmentName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Location" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DepartmentHead" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[DepartmentId]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{E534000B-4DE7-4406-A737-6B57825E253D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_db_2]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input].Columns[DepartmentId]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentId"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[DepartmentId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[DepartmentName]"
+                      name="DepartmentName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DepartmentName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Location</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[DepartmentId]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[DepartmentId]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Name"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Salary]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Gender"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Gender]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[DepartmentName]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[Location]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output]"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Id]"
+                      name="Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Name]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Salary]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Salary]"
+                      name="Salary">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Salary]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[DepartmentName]"
+                      name="DepartmentName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input].Columns[DepartmentName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Location]"
+                      name="Location">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input].Columns[Location]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tblEmpDept]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT ID, name, gender, salary, deptname, city
+FROM     tblEmpDept</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination_DB2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination_DB2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[salary]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deptname]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentName]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Location]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      dataType="wstr"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[salary]"
+                      dataType="i4"
+                      name="salary" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[deptname]"
+                      dataType="wstr"
+                      length="50"
+                      name="deptname" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Name"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Salary]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Gender"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort.Inputs[Sort Input].Columns[DepartmentId]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentId"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[DepartmentId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Id]"
+                      name="Id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Name]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Salary]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Salary]"
+                      name="Salary">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Salary]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[DepartmentId]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Sort.Outputs[Sort Output].Columns[DepartmentId]"
+                      name="DepartmentId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[DepartmentId]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input].Columns[DepartmentHead]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentHead"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentHead]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[ID]"
+                      name="ID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[DepartmentName]"
+                      name="DepartmentName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[Location]"
+                      name="Location">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[Location]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[DepartmentHead]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output].Columns[DepartmentHead]"
+                      name="DepartmentHead">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentHead]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\tblDept"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="tblDept"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tblDepartment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\tblDept.Connections[OleDbConnection]"
+                  connectionManagerID="{E534000B-4DE7-4406-A737-6B57825E253D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_db_2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      name="DepartmentName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentHead]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[DepartmentHead]"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].Columns[DepartmentHead]"
+                      name="DepartmentHead"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      name="DepartmentName" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output].ExternalColumns[DepartmentHead]"
+                      dataType="wstr"
+                      length="50"
+                      name="DepartmentHead" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      name="DepartmentName" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[DepartmentHead]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[DepartmentHead]"
+                      name="DepartmentHead" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\tblEmp"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="tblEmp"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[tblEmp]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\tblEmp.Connections[OleDbConnection]"
+                  connectionManagerID="{E534000B-4DE7-4406-A737-6B57825E253D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Source_db_2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="30"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Salary]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Salary]"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Salary]"
+                      name="Salary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="10"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[DepartmentId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[DepartmentId]"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].Columns[DepartmentId]"
+                      name="DepartmentId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="30"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Salary]"
+                      dataType="i4"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output].ExternalColumns[DepartmentId]"
+                      dataType="i4"
+                      name="DepartmentId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Salary]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Salary]"
+                      name="Salary" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[DepartmentId]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[DepartmentId]"
+                      name="DepartmentId" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[Salary]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[DepartmentId]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentId"
+                      lineageId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output].Columns[DepartmentId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[DepartmentName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Name"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Salary]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Gender"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[DepartmentName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Location"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Location]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Location]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      lineageId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output].Columns[Id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[ID]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]"
+                      name="Salary" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentId]"
+                      dataType="i4"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentId]"
+                      name="DepartmentId" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentName]"
+                      name="DepartmentName" />
+                    <outputColumn
+                      refId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Location]"
+                      name="Location" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\EmployeetoEmp.Paths[Flat File Source Output]"
+              endId="Package\EmployeetoEmp\Lookup.Inputs[Lookup Input]"
+              name="Flat File Source Output"
+              startId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[Lookup Match Output]"
+              endId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 1]"
+              name="Lookup Match Output"
+              startId="Package\EmployeetoEmp\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[Merge Join Output]"
+              endId="Package\EmployeetoEmp\Union All.Inputs[Union All Input 2]"
+              name="Merge Join Output"
+              startId="Package\EmployeetoEmp\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[OLE DB Source Output]"
+              endId="Package\EmployeetoEmp\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\EmployeetoEmp\tblEmp.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[OLE DB Source Output1]"
+              endId="Package\EmployeetoEmp\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\EmployeetoEmp\tblDept.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[Sort Output]"
+              endId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\EmployeetoEmp\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[Sort Output1]"
+              endId="Package\EmployeetoEmp\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\EmployeetoEmp\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\EmployeetoEmp.Paths[Union All Output 1]"
+              endId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="305.6,46.4"
+          Id="Package\EmployeetoEmp"
+          TopLeft="168.571431442183,55.058824301591" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\EmployeetoEmp">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="111.2,41.6"
+          Id="Package\EmployeetoEmp\tblEmp"
+          TopLeft="41.7230735852168,31.9493212412291" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\EmployeetoEmp\Flat File Source"
+          TopLeft="498.285722771469,24.2352942892425" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\EmployeetoEmp\Merge Join"
+          TopLeft="112.000001907349,213.647061629114" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\EmployeetoEmp\tblDept"
+          TopLeft="213.714289353818,31.3411767194015" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\EmployeetoEmp\Sort"
+          TopLeft="48.0000008174352,106.823530595773" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[OLE DB Source Output]"
+          TopLeft="97.061537201326,73.5493212412291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.2742093545438"
+              Start="0,0"
+              End="0,25.7742093545438">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7742093545438" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\EmployeetoEmp\Sort 1"
+          TopLeft="229.142861045137,113.552942454856" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[OLE DB Source Output1]"
+          TopLeft="270.114289353818,72.9411767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.2285716913185,40.6117657354547"
+              Start="0,0"
+              End="12.2285716913185,33.1117657354547">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3058828677273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3058828677273"
+                    Point2="0,20.3058828677273"
+                    Point3="4,20.3058828677273" />
+                  <mssgle:LineSegment
+                    End="8.22857169131851,20.3058828677273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.22857169131851,20.3058828677273"
+                    Point2="12.2285716913185,20.3058828677273"
+                    Point3="12.2285716913185,24.3058828677273" />
+                  <mssgle:LineSegment
+                    End="12.2285716913185,33.1117657354547" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Sort Output]"
+          TopLeft="96.8000008174352,148.423530595773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.0000010899134,65.223531033341"
+              Start="0,0"
+              End="80.0000010899134,57.723531033341">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.6117655166705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.6117655166705"
+                    Point2="0,32.6117655166705"
+                    Point3="4,32.6117655166705" />
+                  <mssgle:LineSegment
+                    End="76.0000010899134,32.6117655166705" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.0000010899134,32.6117655166705"
+                    Point2="80.0000010899134,32.6117655166705"
+                    Point3="80.0000010899134,36.6117655166705" />
+                  <mssgle:LineSegment
+                    End="80.0000010899134,57.723531033341" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Sort Output1]"
+          TopLeft="282.342861045137,155.152942454856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.2761924711216,58.4941191742577"
+              Start="0,0"
+              End="-85.2761924711216,50.9941191742577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6684657544991" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.6684657544991"
+                    Point2="0,34.6684657544991"
+                    Point3="-4,34.6684657544991" />
+                  <mssgle:LineSegment
+                    End="-81.2761924711216,34.6684657544991" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.2761924711216,34.6684657544991"
+                    Point2="-85.2761924711216,34.6684657544991"
+                    Point3="-85.2761924711216,38.6684657544991" />
+                  <mssgle:LineSegment
+                    End="-85.2761924711216,50.9941191742577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\EmployeetoEmp\Lookup"
+          TopLeft="509.714294394668,103.388236744099" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Flat File Source Output]"
+          TopLeft="569.800008583069,65.8352942892425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.5529424548561"
+              Start="0,0"
+              End="0,30.0529424548561">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0529424548561" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\EmployeetoEmp\Union All"
+          TopLeft="347.428577345245,184.423531908477" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Lookup Match Output]"
+          TopLeft="566.114294394668,144.988236744099">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-158.685717049424,39.4352951643788"
+              Start="0,0"
+              End="-158.685717049424,31.9352951643788">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7176475821894" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7176475821894"
+                    Point2="0,19.7176475821894"
+                    Point3="-4,19.7176475821894" />
+                  <mssgle:LineSegment
+                    End="-154.685717049424,19.7176475821894" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-154.685717049424,19.7176475821894"
+                    Point2="-158.685717049424,19.7176475821894"
+                    Point3="-158.685717049424,23.7176475821894" />
+                  <mssgle:LineSegment
+                    End="-158.685717049424,31.9352951643788" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-127.534245243462,24.7176475821894,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Merge Join Output]"
+          TopLeft="241.600001907349,234.447061629114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.828575437896,-29.2235297206365"
+              Start="0,0"
+              End="98.3285754378962,-29.2235297206365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48.9142877189481,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.9142877189481,0"
+                    Point2="52.9142877189481,0"
+                    Point3="52.9142877189481,-4" />
+                  <mssgle:LineSegment
+                    End="52.9142877189481,-25.2235297206365" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.9142877189481,-25.2235297206365"
+                    Point2="52.9142877189481,-29.2235297206365"
+                    Point3="56.9142877189481,-29.2235297206365" />
+                  <mssgle:LineSegment
+                    End="98.3285754378962,-29.2235297206365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\EmployeetoEmp\OLE DB Destination"
+          TopLeft="289.142862066931,303.435298373213" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Union All Output 1]"
+          TopLeft="407.428577345245,226.023531908477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.0857152783141,77.4117664647351"
+              Start="0,0"
+              End="-33.0857152783141,69.9117664647351">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.7058832323675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.7058832323675"
+                    Point2="0,38.7058832323675"
+                    Point3="-4,38.7058832323675" />
+                  <mssgle:LineSegment
+                    End="-29.0857152783141,38.7058832323675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.0857152783141,38.7058832323675"
+                    Point2="-33.0857152783141,38.7058832323675"
+                    Point3="-33.0857152783141,42.7058832323675" />
+                  <mssgle:LineSegment
+                    End="-33.0857152783141,69.9117664647351" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeetoEmp\tblEmp">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeetoEmp\tblDept">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeetoEmp\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[tblDepartment]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeetoEmp\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
