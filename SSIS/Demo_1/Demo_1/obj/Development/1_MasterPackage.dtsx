@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/26/2019 6:58:36 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-FHAGM43B"
+  DTS:CreatorName="LAPTOP-FHAGM43B\payal jain"
+  DTS:DTSID="{5871EAE8-6C98-41CC-BF5B-66D2E2445B53}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="1_MasterPackage"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{996468D1-B9AE-45B5-993D-8BA386CA1F8E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[db_2_Backup]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{4161742C-A5F8-4A01-9EDD-ABB75D4D814D}"
+      DTS:ObjectName="db_2_Backup">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Back Up Database Task"
+      DTS:CreationName="Microsoft.DbMaintenanceBackupTask"
+      DTS:Description="Back Up Database Task"
+      DTS:DTSID="{7DFDFFFC-21FC-45CF-B5EA-F28E6A1B9636}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceBackupTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Back Up Database Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4161742C-A5F8-4A01-9EDD-ABB75D4D814D}"
+          SQLTask:DatabaseSelectionType="4"
+          SQLTask:ServerVersion="14"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False"
+          SQLTask:BackupAction="0"
+          SQLTask:BackupIsIncremental="False"
+          SQLTask:BackupFileGroupsFiles=""
+          SQLTask:BackupDeviceType="2"
+          SQLTask:BackupPhysicalDestinationType="2"
+          SQLTask:BackupDestinationType="0"
+          SQLTask:BackupDestinationAutoFolderPath="D:\DataBase"
+          SQLTask:BackupActionForExistingBackups="0"
+          SQLTask:BackupCreateSubFolder="False"
+          SQLTask:BackupFileExtension=""
+          SQLTask:BackupVerifyIntegrity="False"
+          SQLTask:ExpireDate="2019-10-10T00:00:00"
+          SQLTask:RetainDays="14"
+          SQLTask:InDays="True"
+          SQLTask:UseExpiration="False"
+          SQLTask:BackupCompressionAction="0"
+          SQLTask:CopyOnlyBackup="False"
+          SQLTask:IgnoreReplicaType="False"
+          SQLTask:CredentialName=""
+          SQLTask:ContainerName=""
+          SQLTask:UrlPrefix=""
+          SQLTask:IsBackupEncrypted="False"
+          SQLTask:BackupEncryptionAlgorithm="0"
+          SQLTask:BackupEncryptorType="0"
+          SQLTask:BackupEncryptorName=""
+          SQLTask:Checksum="False"
+          SQLTask:ContinueOnError="False"
+          SQLTask:IsBlockSizeUsed="False"
+          SQLTask:IsMaxTransferSizeUsed="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:SelectedDatabases
+            SQLTask:DatabaseName="db_2" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EmployeeetoEmp"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{9075DD6D-C963-4E2C-9990-B7424EB967AB}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EmployeeetoEmp"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Employeeto Emp.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LookupJoiin"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{50B2A765-E792-42BD-8DBF-49723F9276B7}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LookupJoiin"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>Lookup_Join.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ToFileSystem"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{8C2AF0A0-5433-4371-B1F7-6BA20847481E}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ToFileSystem"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>ToFilesystem.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D6971E67-8FAC-45D4-AE0E-3DF86115A2F4}"
+      DTS:From="Package\EmployeeetoEmp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\LookupJoiin" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{79217B2A-7AA7-4463-A9C3-91522FD4AE5B}"
+      DTS:From="Package\LookupJoiin"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\ToFileSystem" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FD1EFE80-D6F5-4459-A546-DAD299D3B871}"
+      DTS:From="Package\Back Up Database Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\EmployeeetoEmp" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\EmployeeetoEmp"
+          TopLeft="503.428580001909,123.576472321349" />
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\LookupJoiin"
+          TopLeft="547.428580751225,203.105885201425" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\ToFileSystem"
+          TopLeft="538.285723452665,328.51765166616" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="583.428580001909,165.176472321349">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.8000007493155,37.9294128800759"
+              Start="0,0"
+              End="30.8000007493155,30.4294128800759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.9647064400379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.9647064400379"
+                    Point2="0,18.9647064400379"
+                    Point3="4,18.9647064400379" />
+                  <mssgle:LineSegment
+                    End="26.8000007493155,18.9647064400379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26.8000007493155,18.9647064400379"
+                    Point2="30.8000007493155,18.9647064400379"
+                    Point3="30.8000007493155,22.9647064400379" />
+                  <mssgle:LineSegment
+                    End="30.8000007493155,30.4294128800759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="611.457152101945,244.705885201425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.8117664647351"
+              Start="0,0"
+              End="0,76.3117664647351">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.3117664647351" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Back Up Database Task"
+          TopLeft="155.428574075504,91.3411774486819" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="344.228574075504,112.141177448682">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159.200005926405,32.2352948726667"
+              Start="0,0"
+              End="151.700005926405,32.2352948726667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="75.6000029632024,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.6000029632024,0"
+                    Point2="79.6000029632024,0"
+                    Point3="79.6000029632024,4" />
+                  <mssgle:LineSegment
+                    End="79.6000029632024,28.2352948726667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="79.6000029632024,28.2352948726667"
+                    Point2="79.6000029632024,32.2352948726667"
+                    Point3="83.6000029632024,32.2352948726667" />
+                  <mssgle:LineSegment
+                    End="151.700005926405,32.2352948726667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
