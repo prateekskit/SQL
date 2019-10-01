@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="ToFilesystem"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{594A62B6-EA2B-479B-84A7-BFD5DA02822F}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{76B8C837-D5C6-4EF1-8142-98DB4FB1FE2C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2462,6 +2462,44 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task 1\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Data Flow Task 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Data Flow Task 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Data Flow Task 1\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task 1\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -4026,8 +4064,639 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task 1\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[SalesTerritoryKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesTerritoryKey"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesTerritoryKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesTerritoryKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeKey"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[ParentEmployeeKey]"
+                      cachedDataType="i4"
+                      cachedName="ParentEmployeeKey"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentEmployeeKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmployeeNationalIDAlternateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="EmployeeNationalIDAlternateKey"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeeNationalIDAlternateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeNationalIDAlternateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[ParentEmployeeNationalIDAlternateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ParentEmployeeNationalIDAlternateKey"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ParentEmployeeNationalIDAlternateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeNationalIDAlternateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[MiddleName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MiddleName"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MiddleName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[NameStyle]"
+                      cachedDataType="bool"
+                      cachedName="NameStyle"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[NameStyle]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[NameStyle]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Title"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Title]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[HireDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[HireDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BirthDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoginID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LoginID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmailAddress]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmailAddress"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmailAddress]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmailAddress]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="Phone"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Phone]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmergencyContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmergencyContactName"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmergencyContactName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmergencyContactPhone]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="EmergencyContactPhone"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmergencyContactPhone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactPhone]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalariedFlag]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalariedFlag]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Gender]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[PayFrequency]"
+                      cachedDataType="ui1"
+                      cachedName="PayFrequency"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[PayFrequency]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[PayFrequency]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[BaseRate]"
+                      cachedDataType="cy"
+                      cachedName="BaseRate"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[BaseRate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BaseRate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[VacationHours]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[VacationHours]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[SickLeaveHours]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SickLeaveHours]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrentFlag]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[CurrentFlag]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[SalesPersonFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalesPersonFlag"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesPersonFlag]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesPersonFlag]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[DepartmentName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DepartmentName"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[DepartmentName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[StartDate]"
+                      cachedDataType="dbDate"
+                      cachedName="StartDate"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[StartDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[StartDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EndDate]"
+                      cachedDataType="dbDate"
+                      cachedName="EndDate"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EndDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EndDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Status"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1].Columns[EmployeePhoto]"
+                      cachedDataType="image"
+                      cachedName="EmployeePhoto"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[EmployeePhoto]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeePhoto]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesTerritoryKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesTerritoryKey]"
+                      name="SalesTerritoryKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeKey]"
+                      name="EmployeeKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeKey]"
+                      name="ParentEmployeeKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeNationalIDAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeeNationalIDAlternateKey]"
+                      name="EmployeeNationalIDAlternateKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeNationalIDAlternateKey]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[ParentEmployeeNationalIDAlternateKey]"
+                      name="ParentEmployeeNationalIDAlternateKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MiddleName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MiddleName]"
+                      name="MiddleName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[NameStyle]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[NameStyle]"
+                      name="NameStyle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[LoginID]"
+                      name="LoginID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmailAddress]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmailAddress]"
+                      name="EmailAddress" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Phone]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactName]"
+                      name="EmergencyContactName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactPhone]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmergencyContactPhone]"
+                      name="EmergencyContactPhone" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalariedFlag]"
+                      name="SalariedFlag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[PayFrequency]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[PayFrequency]"
+                      name="PayFrequency" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BaseRate]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[BaseRate]"
+                      name="BaseRate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[VacationHours]"
+                      name="VacationHours" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SickLeaveHours]"
+                      name="SickLeaveHours" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[CurrentFlag]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[CurrentFlag]"
+                      name="CurrentFlag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesPersonFlag]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[SalesPersonFlag]"
+                      name="SalesPersonFlag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[DepartmentName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[DepartmentName]"
+                      name="DepartmentName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[StartDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[StartDate]"
+                      name="StartDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EndDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EndDate]"
+                      name="EndDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeePhoto]"
+                      dataType="image"
+                      lineageId="Package\Data Flow Task 1\Union All.Outputs[Union All Output 1].Columns[EmployeePhoto]"
+                      name="EmployeePhoto" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Multicast Output 1]"
+              endId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Data Flow Task 1\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Multicast Output 2]"
+              endId="Package\Data Flow Task 1\Union All.Inputs[Union All Input 1]"
+              name="Multicast Output 2"
+              startId="Package\Data Flow Task 1\Multicast.Outputs[Multicast Output 2]" />
             <path
               refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
               endId="Package\Data Flow Task 1\Conditional Split.Inputs[Conditional Split Input]"
@@ -4040,7 +4709,7 @@
               startId="Package\Data Flow Task 1\Conditional Split.Outputs[OnlyFemale]" />
             <path
               refId="Package\Data Flow Task 1.Paths[OnlyMale]"
-              endId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Data Flow Task 1\Multicast.Inputs[Multicast Input 1]"
               name="OnlyMale"
               startId="Package\Data Flow Task 1\Conditional Split.Outputs[OnlyMale]" />
           </paths>
@@ -4349,7 +5018,7 @@
     design-time-name="Package\Data Flow Task 1">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\Data Flow Task 1\OLE DB Source"
@@ -4395,47 +5064,11 @@
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Data Flow Task 1\OLE DB Destination"
-          TopLeft="419.2,320.8" />
+          TopLeft="273.6,392" />
         <NodeLayout
           Size="179.2,41.6"
           Id="Package\Data Flow Task 1\OLE DB Destination 1"
           TopLeft="792.8,328.8" />
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[OnlyMale]"
-          TopLeft="606,186.4">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-101.6,134.4"
-              Start="0,0"
-              End="-101.6,126.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,63.2"
-                    Point2="0,67.2"
-                    Point3="-4,67.2" />
-                  <mssgle:LineSegment
-                    End="-97.6,67.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-97.6,67.2"
-                    Point2="-101.6,67.2"
-                    Point3="-101.6,71.2" />
-                  <mssgle:LineSegment
-                    End="-101.6,126.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-71.7288671875,72.2,41.857734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[OnlyFemale]"
           TopLeft="630.4,186.4">
@@ -4470,6 +5103,118 @@
             <mssgm:EdgeLabel
               BoundingBox="99.4911328125001,62.8363076923077,53.017734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Data Flow Task 1\Multicast"
+          TopLeft="381.6,274.4" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OnlyMale]"
+          TopLeft="581.6,186.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-140,88"
+              Start="0,0"
+              End="-140,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7415384615384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7415384615384"
+                    Point2="0,35.7415384615384"
+                    Point3="-4,35.7415384615384" />
+                  <mssgle:LineSegment
+                    End="-136,35.7415384615384" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-136,35.7415384615384"
+                    Point2="-140,35.7415384615384"
+                    Point3="-140,39.7415384615384" />
+                  <mssgle:LineSegment
+                    End="-140,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.9288671875,40.7415384615384,41.857734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Multicast Output 1]"
+          TopLeft="441.6,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-82.8,76.0000000000001"
+              Start="0,0"
+              End="-82.8,68.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34"
+                    Point2="0,38"
+                    Point3="-4,38" />
+                  <mssgle:LineSegment
+                    End="-78.8,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.8,38"
+                    Point2="-82.8,38"
+                    Point3="-82.8,42" />
+                  <mssgle:LineSegment
+                    End="-82.8,68.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Data Flow Task 1\Union All"
+          TopLeft="590.4,408" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Multicast Output 2]"
+          TopLeft="460.266666666667,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="190.133333333333,92"
+              Start="0,0"
+              End="190.133333333333,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5263157894737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5263157894737"
+                    Point2="0,37.5263157894737"
+                    Point3="4,37.5263157894737" />
+                  <mssgle:LineSegment
+                    End="186.133333333333,37.5263157894737" />
+                  <mssgle:CubicBezierSegment
+                    Point1="186.133333333333,37.5263157894737"
+                    Point2="190.133333333333,37.5263157894737"
+                    Point3="190.133333333333,41.5263157894737" />
+                  <mssgle:LineSegment
+                    End="190.133333333333,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

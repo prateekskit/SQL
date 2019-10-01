@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.db_errorhandler"
+  DTS:DTSID="{74D120F6-348A-4FDA-8B69-EFBC4E2ED494}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;Initial Catalog=db_errorhandler;Integrated Security=True;Application Name=SSIS-Demo_1-{74D120F6-348A-4FDA-8B69-EFBC4E2ED494}LocalHost.db_errorhandler;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -2,18 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Demo_1</Name>
-    <LastWriteTime>2019-09-26T02:05:04.1766444Z</LastWriteTime>
+    <LastWriteTime>2019-09-27T01:54:33.0753611Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Employeeto Emp.dtsx</Name>
-      <LastWriteTime>2019-09-25T01:09:43.166839Z</LastWriteTime>
+      <LastWriteTime>2019-09-27T01:05:39.6687578Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>FileSqltoSQL.dtsx</Name>
-      <LastWriteTime>2019-09-25T01:27:34.591104Z</LastWriteTime>
+      <LastWriteTime>2019-09-27T01:20:38.5287874Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,12 +23,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ToFilesystem.dtsx</Name>
-      <LastWriteTime>2019-09-26T02:04:56.8036866Z</LastWriteTime>
+      <LastWriteTime>2019-09-26T02:08:16.2605021Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>1_MasterPackage.dtsx</Name>
-      <LastWriteTime>2019-09-26T01:55:14.9647649Z</LastWriteTime>
+      <LastWriteTime>2019-09-27T01:55:00.9335227Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -39,6 +39,11 @@
     <ProjectBuildItemInfo>
       <Name>Package1.dtsx</Name>
       <LastWriteTime>2019-09-26T01:57:54.6021593Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>EventHandler.dtsx</Name>
+      <LastWriteTime>2019-09-27T01:38:02.951368Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

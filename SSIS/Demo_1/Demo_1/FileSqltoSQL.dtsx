@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="FileSqltoSQL"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{2EF03B71-5836-40FA-A399-B0A69B228DD1}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{FAD83B40-CF5E-41BC-8983-6FFE40C40B23}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -83,6 +83,80 @@
               DTS:TextQualified="True"
               DTS:ObjectName="DepartmentId"
               DTS:DTSID="{DBCCC45B-68CB-40EA-8A9B-7B6FB2E5A288}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ErrorFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2E0A4966-46E5-482E-ADFC-9E1F7304CDDE}"
+      DTS:ObjectName="ErrorFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\GIT\SQL\SSIS\Demo_1\RowsWtihError.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID"
+              DTS:DTSID="{660511BE-E457-4B37-8FC2-08E53B82E97B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{CDE8B31C-DF87-4645-8693-975B94D3F440}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{2997DEB2-6F38-4DB7-B720-D0201325A575}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Salary"
+              DTS:DTSID="{68AE38BC-A021-4E13-A4B5-770EBAD0CDD0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DepartmentId"
+              DTS:DTSID="{8327AEDA-20DD-44A5-9BB3-67BCD1D5D819}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="derivedColumn"
+              DTS:DTSID="{31F50C48-6841-407B-9BE9-5310FECD2567}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -280,6 +354,121 @@
                   <externalMetadataColumns />
                 </output>
               </outputs>
+            </component>
+            <component
+              refId="Package\EmployeetoEmp\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="16393"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeetoEmp\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ErrorFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[ErrorFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[Salary]"
+                      cachedDataType="i4"
+                      cachedName="Salary"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Salary]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Salary]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[DepartmentId]"
+                      cachedDataType="i4"
+                      cachedName="DepartmentId"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DepartmentId]"
+                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentId]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[derivedColumn]"
+                      lineageId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Salary]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[DepartmentId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DepartmentId" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[derivedColumn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="derivedColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
             </component>
             <component
               refId="Package\EmployeetoEmp\Flat File Source"
@@ -540,7 +729,7 @@
                 <input
                   refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
@@ -1079,6 +1268,11 @@
               name="Flat File Source Output"
               startId="Package\EmployeetoEmp\Flat File Source.Outputs[Flat File Source Output]" />
             <path
+              refId="Package\EmployeetoEmp.Paths[OLE DB Destination Error Output]"
+              endId="Package\EmployeetoEmp\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\EmployeetoEmp\OLE DB Destination.Outputs[OLE DB Destination Error Output]" />
+            <path
               refId="Package\EmployeetoEmp.Paths[OLE DB Source Output]"
               endId="Package\EmployeetoEmp\Derived Column.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
@@ -1118,17 +1312,63 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\EmployeetoEmp\OLE DB Source"
+          TopLeft="43.4373593286966,16.0434386652139" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\EmployeetoEmp\Derived Column 1"
+          TopLeft="422.285721477197,86.0235304499167" />
+        <NodeLayout
           Size="170.4,41.6"
           Id="Package\EmployeetoEmp\OLE DB Destination"
-          TopLeft="349.054946388143,283.815384323673" />
+          TopLeft="318.769231586666,245.274207312559" />
+        <NodeLayout
+          Size="120,44"
+          Id="Package\EmployeetoEmp\Union All"
+          TopLeft="114.857144813148,230.682356064212" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\EmployeetoEmp\Flat File Source"
+          TopLeft="421.142864314877,13.8352941433864" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\EmployeetoEmp\Derived Column"
           TopLeft="67.2527442165597,80.5321254356063" />
-        <NodeLayout
-          Size="223.2,41.6"
-          Id="Package\EmployeetoEmp\OLE DB Source"
-          TopLeft="43.4373593286966,16.0434386652139" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Union All Output 1]"
+          TopLeft="234.857144813148,252.682356064212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.912086773518,13.3918512483473"
+              Start="0,0"
+              End="76.412086773518,13.3918512483473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.956043386759,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.956043386759,0"
+                    Point2="41.956043386759,0"
+                    Point3="41.956043386759,4" />
+                  <mssgle:LineSegment
+                    End="41.956043386759,9.39185124834728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.956043386759,9.39185124834728"
+                    Point2="41.956043386759,13.3918512483473"
+                    Point3="45.956043386759,13.3918512483473" />
+                  <mssgle:LineSegment
+                    End="76.412086773518,13.3918512483473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\EmployeetoEmp.Paths[OLE DB Source Output]"
           TopLeft="155.037359328697,57.6434386652139">
@@ -1163,14 +1403,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\EmployeetoEmp\Flat File Source"
-          TopLeft="421.142864314877,13.8352941433864" />
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\EmployeetoEmp\Derived Column 1"
-          TopLeft="422.285721477197,86.0235304499167" />
         <EdgeLayout
           Id="Package\EmployeetoEmp.Paths[Flat File Source Output]"
           TopLeft="499.914292896037,55.4352941433864">
@@ -1191,46 +1423,6 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120,44"
-          Id="Package\EmployeetoEmp\Union All"
-          TopLeft="114.857144813148,230.682356064212" />
-        <EdgeLayout
-          Id="Package\EmployeetoEmp.Paths[Derived Column Output]"
-          TopLeft="143.65274421656,122.132125435606">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12.537733929922,108.550230628606"
-              Start="0,0"
-              End="12.537733929922,101.050230628606">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.2731628722009" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,60.2731628722009"
-                    Point2="0,64.2731628722009"
-                    Point3="4,64.2731628722009" />
-                  <mssgle:LineSegment
-                    End="8.53773392992201,64.2731628722009" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.53773392992201,64.2731628722009"
-                    Point2="12.537733929922,64.2731628722009"
-                    Point3="12.537733929922,68.2731628722009" />
-                  <mssgle:LineSegment
-                    End="12.537733929922,101.050230628606" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-1.73113303503899,69.2731628722009,16,16"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1264,44 +1456,68 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-162.980954998691,66.0216730610961,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\EmployeetoEmp.Paths[Union All Output 1]"
-          TopLeft="234.857144813148,252.682356064212">
+          Id="Package\EmployeetoEmp.Paths[Derived Column Output]"
+          TopLeft="143.65274421656,122.132125435606">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="114.197801574995,51.9330282594606"
+              EndConnector="12.537733929922,108.550230628606"
               Start="0,0"
-              End="106.697801574995,51.9330282594606">
+              End="12.537733929922,101.050230628606">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="53.0989007874975,0" />
+                    End="0,60.2731628722009" />
                   <mssgle:CubicBezierSegment
-                    Point1="53.0989007874975,0"
-                    Point2="57.0989007874975,0"
-                    Point3="57.0989007874975,4" />
+                    Point1="0,60.2731628722009"
+                    Point2="0,64.2731628722009"
+                    Point3="4,64.2731628722009" />
                   <mssgle:LineSegment
-                    End="57.0989007874975,47.9330282594606" />
+                    End="8.53773392992201,64.2731628722009" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.0989007874975,47.9330282594606"
-                    Point2="57.0989007874975,51.9330282594606"
-                    Point3="61.0989007874975,51.9330282594606" />
+                    Point1="8.53773392992201,64.2731628722009"
+                    Point2="12.537733929922,64.2731628722009"
+                    Point3="12.537733929922,68.2731628722009" />
                   <mssgle:LineSegment
-                    End="106.697801574995,51.9330282594606" />
+                    End="12.537733929922,101.050230628606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\EmployeetoEmp\Flat File Destination"
+          TopLeft="615.428581909258,244.094121070387" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[OLE DB Destination Error Output]"
+          TopLeft="489.169231586666,265.484164191473">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.259350322592,0"
+              Start="0,0"
+              End="118.759350322592,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="118.759350322592,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="49.0989007874975,-22,16,16"
+              BoundingBox="-22.4903639012042,5,163.740078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1309,7 +1525,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\EmployeetoEmp\OLE DB Destination">
+    design-time-name="Package\EmployeetoEmp\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1322,7 +1538,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\EmployeetoEmp\OLE DB Source">
+    design-time-name="Package\EmployeetoEmp\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -4,6 +4,8 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
+        <ServerName>.</ServerName>
+        <PathOnServer>/SSISDB/deployment_new/Demo_1</PathOnServer>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

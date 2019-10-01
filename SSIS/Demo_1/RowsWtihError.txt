@@ -1,0 +1,8 @@
+ID	Name	Gender	Salary	DepartmentId	derivedColumn
+4	0	Male	4800	4	-1071607685
+5	0	Female	3200	1	-1071607685
+6	0	Male	4800	3	-1071607685
+30	0	Female		1	-1071607685
+1	0	Male	5000	3	-1071607685
+2	0	Male	3400	2	-1071607685
+3	0	Female	6000	1	-1071607685
