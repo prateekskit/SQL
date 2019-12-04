@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSource1">
+  <ConnectionProperties>
+    <Extension>SQLAZURE</Extension>
+    <ConnectString>Data Source=LAPTOP-FHAGM43B;Initial Catalog=AdventureWorksDW2014;Encrypt=True;TrustServerCertificate=False</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>3ba1c7bb-ecc0-4980-84f0-4d0c12c854ea</DataSourceID>
+</RptDataSource>

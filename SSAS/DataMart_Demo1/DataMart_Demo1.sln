@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "DataMart_Demo1", "DataMart_Demo1\DataMart_Demo1.dwproj", "{FCE472D4-2251-4776-A35C-BAEF5BF82A4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCE472D4-2251-4776-A35C-BAEF5BF82A4A}.Development|Default.ActiveCfg = Development
+		{FCE472D4-2251-4776-A35C-BAEF5BF82A4A}.Development|Default.Build.0 = Development
+		{FCE472D4-2251-4776-A35C-BAEF5BF82A4A}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8018A2D9-D2E8-4974-A2A4-07EE86529B9E}
+	EndGlobalSection
+EndGlobal

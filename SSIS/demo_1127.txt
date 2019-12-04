@@ -1,0 +1,6 @@
+ID	Name	Gender	Salary	DepartmentID
+1	Tom	Male	2500	1
+2	Pam	Female	3000	3
+3	John	Male	3500	1
+4	Sam	Male	4500	2
+5	Todd	Male	2800	2

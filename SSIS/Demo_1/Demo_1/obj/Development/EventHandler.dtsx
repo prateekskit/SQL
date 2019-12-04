@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="EventHandler"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{6BB61E58-079B-4C58-8A73-E211205E7C45}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{AB6F3F71-CA7C-465A-A513-AA49981C73F6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -175,6 +175,52 @@
       DTS:ObjectName="EmployeetoEmp"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\EmployeetoEmp.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{13392754-893B-4FB9-BCC2-B55EF507CECB}"
+          DTS:EventID="0"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{E997D183-44C9-413A-9367-FBDD2837559C}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\EmployeetoEmp.EventHandlers[OnError]\Execute SQL Task"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{5c69f908-2658-424e-a540-44f0730da23f}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute SQL Task">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{74D120F6-348A-4FDA-8B69-EFBC4E2ED494}"
+                  SQLTask:SqlStatementSource="insert into tblError(err_message)&#xA;values(@Error)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="Error"
+                    SQLTask:DtsVariableName="System::ErrorDescription"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -650,13 +696,6 @@
                       cachedName="DepartmentId"
                       externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentId]"
                       lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[DepartmentId]" />
-                    <inputColumn
-                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[concatColnm]"
-                      cachedDataType="wstr"
-                      cachedLength="101"
-                      cachedName="concatColnm"
-                      externalMetadataColumnId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[namGender]"
-                      lineageId="Package\EmployeetoEmp\Union All.Outputs[Union All Output 1].Columns[concatColnm]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -682,11 +721,6 @@
                       refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentId]"
                       dataType="i4"
                       name="DepartmentId" />
-                    <externalMetadataColumn
-                      refId="Package\EmployeetoEmp\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[namGender]"
-                      dataType="wstr"
-                      length="50"
-                      name="namGender" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1228,10 +1262,22 @@
         <NodeLayout
           Size="305.6,46.4"
           Id="Package\EmployeetoEmp"
-          TopLeft="249.142861385735,69.1294127342198" />
+          TopLeft="124.571430692868,129.69411946597" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package.EventHandlers[OnError]\Execute SQL Task"
+          TopLeft="241.371424766463,85.3647058566136" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\EmployeetoEmp">
     <LayoutInfo>
@@ -1246,6 +1292,10 @@
           Id="Package\EmployeetoEmp\Derived Column 1"
           TopLeft="422.285721477197,86.0235304499167" />
         <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\EmployeetoEmp\OLE DB Destination"
+          TopLeft="318.769231586666,245.274207312559" />
+        <NodeLayout
           Size="120,44"
           Id="Package\EmployeetoEmp\Union All"
           TopLeft="114.857144813148,230.682356064212" />
@@ -1254,13 +1304,43 @@
           Id="Package\EmployeetoEmp\Flat File Source"
           TopLeft="421.142864314877,13.8352941433864" />
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\EmployeetoEmp\OLE DB Destination"
-          TopLeft="318.769231586666,245.274207312559" />
-        <NodeLayout
           Size="152.8,41.6"
           Id="Package\EmployeetoEmp\Derived Column"
           TopLeft="67.2527442165597,80.5321254356063" />
+        <EdgeLayout
+          Id="Package\EmployeetoEmp.Paths[Union All Output 1]"
+          TopLeft="234.857144813148,252.682356064212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.912086773518,13.3918512483473"
+              Start="0,0"
+              End="76.412086773518,13.3918512483473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.956043386759,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.956043386759,0"
+                    Point2="41.956043386759,0"
+                    Point3="41.956043386759,4" />
+                  <mssgle:LineSegment
+                    End="41.956043386759,9.39185124834728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.956043386759,9.39185124834728"
+                    Point2="41.956043386759,13.3918512483473"
+                    Point3="45.956043386759,13.3918512483473" />
+                  <mssgle:LineSegment
+                    End="76.412086773518,13.3918512483473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\EmployeetoEmp.Paths[OLE DB Source Output]"
           TopLeft="155.037359328697,57.6434386652139">
@@ -1385,40 +1465,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\EmployeetoEmp.Paths[Union All Output 1]"
-          TopLeft="234.857144813148,252.682356064212">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="83.912086773518,13.3918512483473"
-              Start="0,0"
-              End="76.412086773518,13.3918512483473">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="37.956043386759,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.956043386759,0"
-                    Point2="41.956043386759,0"
-                    Point3="41.956043386759,4" />
-                  <mssgle:LineSegment
-                    End="41.956043386759,9.39185124834728" />
-                  <mssgle:CubicBezierSegment
-                    Point1="41.956043386759,9.39185124834728"
-                    Point2="41.956043386759,13.3918512483473"
-                    Point3="45.956043386759,13.3918512483473" />
-                  <mssgle:LineSegment
-                    End="76.412086773518,13.3918512483473" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1449,14 +1495,14 @@
     </Properties>
   </PipelineComponentMetadata>
   <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnError]">
+    design-time-name="Package\EmployeetoEmp.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="199.2,41.6"
-          Id="Package.EventHandlers[OnError]\Execute SQL Task"
-          TopLeft="464.8,87.2" />
+          Id="Package\EmployeetoEmp.EventHandlers[OnError]\Execute SQL Task"
+          TopLeft="408,136" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>

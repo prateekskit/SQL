@@ -1,0 +1,6 @@
+ID	Name	Gender	Salary	DepartmentId
+6	Ben	Male	7000	1
+7	Sara	Female	4800	3
+8	Valarie	Female	5500	1
+9	James	Male	6500	1	
+10	Russell	Male	8800	1	

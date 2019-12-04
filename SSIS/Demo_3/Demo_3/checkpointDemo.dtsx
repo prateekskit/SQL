@@ -14,8 +14,8 @@
   DTS:ObjectName="checkpointDemo"
   DTS:PackageType="5"
   DTS:SaveCheckpoints="True"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{9CA425A9-C965-4902-BA4B-3AF45CE79CE2}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{D5400A02-0DDC-4FD3-9654-30D5247FE62C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
