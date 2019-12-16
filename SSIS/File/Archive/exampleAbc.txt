@@ -1,4 +1,0 @@
-ID	Name	Gender	Salary	DepartmentId
-1	John	Male	5000	3
-2	Mike	Male	3400	2
-3	Pam	Female	6000	1

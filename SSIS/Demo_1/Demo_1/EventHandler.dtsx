@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="EventHandler"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{AB6F3F71-CA7C-465A-A513-AA49981C73F6}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{FEBAA070-DB44-478B-8D7B-A539E28BB7D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1284,17 +1284,13 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="223.2,41.6"
-          Id="Package\EmployeetoEmp\OLE DB Source"
-          TopLeft="43.4373593286966,16.0434386652139" />
-        <NodeLayout
           Size="162.4,41.6"
           Id="Package\EmployeetoEmp\Derived Column 1"
           TopLeft="422.285721477197,86.0235304499167" />
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\EmployeetoEmp\OLE DB Destination"
-          TopLeft="318.769231586666,245.274207312559" />
+          Size="223.2,41.6"
+          Id="Package\EmployeetoEmp\OLE DB Source"
+          TopLeft="43.4373593286966,16.0434386652139" />
         <NodeLayout
           Size="120,44"
           Id="Package\EmployeetoEmp\Union All"
@@ -1303,6 +1299,10 @@
           Size="150.4,41.6"
           Id="Package\EmployeetoEmp\Flat File Source"
           TopLeft="421.142864314877,13.8352941433864" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\EmployeetoEmp\OLE DB Destination"
+          TopLeft="318.769231586666,245.274207312559" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\EmployeetoEmp\Derived Column"
@@ -1468,6 +1468,18 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\EmployeetoEmp.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\EmployeetoEmp.EventHandlers[OnError]\Execute SQL Task"
+          TopLeft="408,136" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <PipelineComponentMetadata
     design-time-name="Package\EmployeetoEmp\OLE DB Source">
     <Properties>
@@ -1494,17 +1506,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\EmployeetoEmp.EventHandlers[OnError]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="199.2,41.6"
-          Id="Package\EmployeetoEmp.EventHandlers[OnError]\Execute SQL Task"
-          TopLeft="408,136" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
