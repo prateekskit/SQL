@@ -7,8 +7,6 @@ Create table tblDepartment
 )
 Go
 
-
-
 Insert into tblDepartment values (1, 'IT', 'London', 'Rick')
 Insert into tblDepartment values (2, 'Payroll', 'Delhi', 'Ron')
 
@@ -51,16 +49,11 @@ CROSS JOIN tblDepartment
 
 --INNER JOIN
 
-seLECT E.Name,E.Gender,D.DepartmentName,D.DepartmentHead
-FROM tblEmployee E inner join tblDepartment D ON E.DepartmentId = D.ID
-					
-
 SELECT E.Name,D.DepartmentName,D.Location FROM tblEmployee E INNER JOIN tblDepartment D ON E.DepartmentId = D.ID
 
 --LEFT OUTER 
 
-SELECT E.Name,D.DepartmentName,D.Location 
-		FROM tblEmployee E LEFT OUTER JOIN tblDepartment D ON E.DepartmentId = D.ID
+SELECT E.Name,D.DepartmentName,D.Location FROM tblEmployee E LEFT OUTER JOIN tblDepartment D ON E.DepartmentId = D.ID
 
 SELECT E.Name,D.DepartmentName,D.Location FROM tblDepartment D  LEFT OUTER JOIN tblEmployee E ON E.DepartmentId = D.ID
 
@@ -68,10 +61,6 @@ SELECT E.Name,D.DepartmentName,D.Location FROM tblDepartment D  LEFT OUTER JOIN 
 --RIGHT OUTER
 
 SELECT E.Name,D.DepartmentName,D.Location FROM tblDepartment D  RIGHT OUTER JOIN  tblEmployee E ON E.DepartmentId = D.ID
-
-
-
-
 -- FULL JOIN
 
 SELECT E.Name,E.DepartmentId,D.ID,D.DepartmentName,D.Location 
@@ -89,13 +78,13 @@ managerid int
 
 select * from relation
 insert into relation
-values(3,'Zen',1)
+values(4,'Den',1)
 
 select * from relation
 
 Select E.Name as Employee, M.Name as Manager
-from relation E   --- this will give me employeename
-left Join relation M  -- this alias will give me manager name
+from relation E
+left Join relation M
 On E.ManagerId = M.EmployeeId
 
 
