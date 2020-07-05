@@ -1,0 +1,9 @@
+1. Git Hub Link
+https://github.com/prateekskit/SQL
+
+2. Adventure Works Sample Database Link
+https://docs.microsoft.com/en-us/sql/samples/adventureworks-install-configure
+
+3. Some Learning Resource for the SQL SERVER
+
+ W3Schools :    https://www.w3schools.com/sql/sql_ref_keywords.asp
