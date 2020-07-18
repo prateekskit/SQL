@@ -179,12 +179,52 @@ select format(getdate(),'dd-MMM-yy')
 select format(123456789,'###-##-####')
 
 
-select * from tblemp
+use JB_07_2020
+
+
+select * from tblEmployee
+
+select name,gender,salary, row_number() over (order by Salary desc) as 'Row Number'
+from tblEmployee
+where
+
+--- I want 2,3,4 highest employee in the org
+
+with CTE
+AS
+(
+select name,gender,salary, row_number() over (order by Salary desc) as 'Row Number' from tblEmployee
+)
+select * from CTE where [Row Number] IN (2,3,4)
+
+select * from 
+(select name,gender,salary, row_number() over (order by Salary desc) as 'Row Number' from tblEmployee) as T
+where T.[Row Number] IN (2,3,4)
+
+
+select * from T
+
+
+select id,name,gender,salary, 
+row_number() over ( order by Salary desc) as 'Row Number',
+rank() over (order by Salary desc) as 'Rankk',
+dense_rank() over (order by Salary desc) as 'Dens_rankk' from tblEmployee
+
+	
+
+
+select * from tblEmployee order by salary
+
+update tblEmployee
+set Salary = (select salary from tblEmployee where id = 4)
+where id = 1
+
+
 
 select *, ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
 ,rank() over(partition by gender order by salary desc) as rank_original
 ,DENSE_RANK() over (partition by gender order by salary desc) as rank_dense
-from tblemp
+from tblemployee
 
 select * from DimCustomer
 
