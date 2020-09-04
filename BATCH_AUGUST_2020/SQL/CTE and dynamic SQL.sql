@@ -1,4 +1,106 @@
-/* CTE   */
+use AdventureWorksDW2017
+
+select count(*) from DimProductCategory   --40
+select count(*) from DimProductSubcategory   -- 370
+select count(*) from DimProduct where color= 'Black'   -- 6060  -- 1330
+select count(*) from FactInternetSales   -- 60398000
+
+select DPC.EnglishProductCategoryName,DPS.EnglishProductSubcategoryName
+		,DP.EnglishProductName,FIS.SalesAmount
+ FROM FactInternetSales FIS inner join DimProduct DP
+			ON FIS.ProductKey = DP.ProductKey
+			inner join DimProductsubCategory DPS
+			ON DP.ProductSubcategoryKey = dps.ProductSubcategoryKey
+			inner join DimProductCategory DPC 
+			on DPC.ProductCategoryKey = dps.ProductCategoryKey
+			inner join DimSalesTerritory DST on
+					FIS.SalesTerritoryKey = DST.SalesTerritoryKey
+			WHERE DP.Color = 'Black'
+					AND DST.SalesTerritoryCountry = 'United States'
+
+
+
+/*
+I want all the product related information including product name,category 
+and subcategory with sales amount.
+
+but I want only for the products which is having color in BLACK and sold 
+in United States.
+*/
+
+SELECT 
+	T_PRODUCT.EnglishProductCategoryName,T_PRODUCT.EnglishProductSubcategoryName
+	,T_PRODUCT.EnglishProductName,T_PRODUCT.color, FIS.SalesAmount,
+	(
+	select firstname + ' ' + lastname from DimCustomer
+	WHERE CustomerKey = FIS.CustomerKey)  as 'Name'
+	FROM 
+		--- intermdediate results set stored for temproary basis in SQL
+		(
+			SELECT DP.ProductKey,DP.EnglishProductName,DP.Color
+			,DPS.EnglishProductSubcategoryName,
+			DPC.EnglishProductCategoryName			
+			 FROM DimProduct DP inner join DimProductsubCategory DPS
+			ON DP.ProductSubcategoryKey = dps.ProductSubcategoryKey
+			inner join DimProductCategory DPC 
+			on DPC.ProductCategoryKey = dps.ProductCategoryKey
+			WHERE DP.Color = 'Black'
+		)  AS T_PRODUCT
+	INNER JOIN FactInternetSales FIS 
+			ON FIS.ProductKey = T_PRODUCT.ProductKey
+	WHERE FIS.SalesTerritoryKey 
+	IN 	( SELECT SalesTerritoryKey from DimSalesTerritory
+				WHERE SalesTerritoryCountry = 'United States')
+
+select * from T_PRODUCT
+			
+			select * from FactInternetSales
+			select * from DimCustomer
+			select * from DimSalesTerritory
+
+---CTE --- COMMON TABLE EXPRESSIONS
+
+use JB_08_2020
+/* 
+get the 
+*/
+SELECT * 
+	FROM
+		(
+		select *,
+		ROW_NUMBER() OVER(order by salary desc) as 'row_numberr',
+		RANK() OVER(order by salary desc) as 'rank_1',
+		DENSE_RANK() OVER(order by salary desc) as 'dense_rank_2'	
+		from tblEmployee
+	 ) AS T_RANK
+WHERE row_numberr in (2,3,4)
+
+
+
+
+WITH CTE_TABLE 
+AS
+(
+	select *,ROW_NUMBER() OVER(order by salary desc) as 'row_numberr'
+	FROM tblEmployee
+),
+CTE_TABLE_B
+AS
+(
+	select *,ROW_NUMBER() OVER(order by salary desc) as 'row_numberr'
+	FROM tblEmployee
+)
+select * from CTE_TABLE where row_numberr IN (2,3,4)
+UNION 
+select * from CTE_TABLE_B where row_numberr IN (2,3,4)
+
+
+
+
+	
+
+
+
 
 /*   if we want to fetch the department name and  total employee whose count is more than 2 from tables 
 
