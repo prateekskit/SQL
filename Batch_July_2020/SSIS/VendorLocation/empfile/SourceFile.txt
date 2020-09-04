@@ -1,0 +1,5 @@
+ID|Name|Gender|Salary|DepartMentName
+104|JackBa|M|2500|IT
+105|JackNA|F|3500|HR
+106|JiM|F|4500|Payroll
+107|JiM|F|4500|security
