@@ -1,14 +1,29 @@
--- system defined stored procedure
 
-sp_help tblMailingAddress
+-- system defined stored procedure
+use JB_08_2020
+use AdventureWorksDW2017
+sp_help tblMailingAddress   --- about the table
 sp_helptext sp_GetMailingAddr
 sp_help vWEmployeesByDepartment
 sp_tables
 sp_columns tblEmployee
-Sp_depends tblemployee
+Sp_depends factinternetsales
 sp_help tblemployee
 
 sp_helptext sp_columns
+
+CREATE PROCEDURE getCustomerDetails
+AS
+BEGIN
+
+	SELECT * FROM DimCustomer
+
+END
+
+--- SPs can't call from SELECT, WHERE, FROM Clauses
+--- they are individual entities 
+EXEC getCustomerDetails
+
 
 
 
