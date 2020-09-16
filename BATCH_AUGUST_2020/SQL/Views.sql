@@ -3,6 +3,9 @@
 -- system views
 SELECT * FROM [INFORMATION_SCHEMA].[TABLES]
 select * from [INFORMATION_SCHEMA].[ROUTINES]
+
+
+
 -- user defined views
 
 
@@ -39,18 +42,29 @@ Insert into tblEmp values (6,'Ben', 4800, 'Male', 3)
 ---
 
 
-select * from vWEmployeesByDepartment
+select * from tblEmployee
+select * from tblDepartment
 
-CREATE VIEW vWEmployeesByDepartment
+ALTER VIEW vw_EmployesswithDept
 AS
-Select Id, Name, Salary, Gender, DeptName
-from tblEmp
-join tblDept
-on tblEmp.DepartmentId = tblDept.DeptId
+select  E.Name,E.Gender, D.DepartmentName,D.DepartmentHead from tblEmployee E 
+		inner join tblDepartment D on E.DepartmentId = D.DeptID
+
+select * from vw_EmployesswithDept
+
 
 --- security - row level security & column level security
 
+CREATE VIEW  vw_EmpwithDpt_HR
+AS
+select  E.Name,E.Gender,E.Salary,
+		 D.DepartmentName,D.DepartmentHead from tblEmployee E 
+		inner join tblDepartment D on E.DepartmentId = D.DeptID
+		WHERE D.DepartmentName = 'HR'
 
+select * from vw_EmpwithDpt_HR
+
+-- row level security 
 -- column level security
 create view vWEmployeesName
 AS

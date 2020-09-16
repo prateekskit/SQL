@@ -1,0 +1,15 @@
+ID	Name	Gender	Salary	DepartmentId
+1	Tom	Male	4500	1
+2	Pam	Female	3000	3
+3	Malina	Female	53000	1
+4	Todss	FeMale	20000	2
+5	Todd	Male	2800	2
+6	Ben	Male	7000	1
+7	Sariak	Male	54000	3
+8	Valarie	Female	5500	
+9	James	Male	6500	1
+10	Russell	Male	8800	1
+29	jeannie	Female	2598	3
+30	jeammie	Female	2598	3
+31	TERESA	Female	2598	3
+33	HAMMOND	Female	2598	3

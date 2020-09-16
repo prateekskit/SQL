@@ -1,0 +1,15 @@
+ID|Name|Gender|Salary|DepartmentName|Location|DeptHead
+9|James|Male|6500|||
+10|Russell|Male|8800|||
+1|Tom|Male|4500|IT|London|Rick
+3|Malina|Female|53000|IT|London|Rick
+6|Ben|Male|7000|IT|London|Rick
+8|Valarie|Female|5500|IT|London|Rick
+4|Todss|FeMale|20000|Payroll|Delhi|Ron
+5|Todd|Male|2800|Payroll|Delhi|Ron
+30|jeammie|Female|2598|HR|New York|Christie
+29|jeannie|Female|2598|HR|New York|Christie
+7|Sariak|Male|54000|HR|New York|Christie
+2|Pam|Female|3000|HR|New York|Christie
+31|TERESA|Female|2598|HR|New York|Christie
+33|HAMMOND|Female|2598|HR|New York|Christie
