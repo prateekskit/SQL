@@ -1,0 +1,7 @@
+ID|Name|Gender|Salary|DepartmentName|Location|DeptHead
+2|Pam|Female|3000|HR|New York|Christie
+7|Sariak|Male|54000|HR|New York|Christie
+29|jeannie|Female|2598|HR|New York|Christie
+30|jeammie|Female|2598|HR|New York|Christie
+31|TERESA|Female|2598|HR|New York|Christie
+33|HAMMOND|Female|2598|HR|New York|Christie

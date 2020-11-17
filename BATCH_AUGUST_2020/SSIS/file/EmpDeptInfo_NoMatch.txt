@@ -1,0 +1,3 @@
+ID|Name|Gender|Salary|DepartmentName|Location|DeptHead
+9|James|Male|6500|||
+10|Russell|Male|8800|||

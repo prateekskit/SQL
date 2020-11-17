@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Janbask_Demo_Aug_2020", "Janbask_Demo_Aug_2020\Janbask_Demo_Aug_2020.rptproj", "{1E4A6095-718F-4AF9-9863-EC71A403A62D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Debug|Default.ActiveCfg = Debug
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Debug|Default.Build.0 = Debug
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Debug|Default.Deploy.0 = Debug
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.DebugLocal|Default.Build.0 = DebugLocal
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Release|Default.ActiveCfg = Release
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Release|Default.Build.0 = Release
+		{1E4A6095-718F-4AF9-9863-EC71A403A62D}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B676499A-B2DE-407C-82F8-8F4E2547BFE2}
+	EndGlobalSection
+EndGlobal

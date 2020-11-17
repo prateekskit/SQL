@@ -1,5 +1,5 @@
 First_Name,Last_Name,DOB,MaritalStatus,Gender,EmailAddress,Education,Occupation,Income,children,Cars 
-Jon,Yang,1971-10-06,M,M,jon24@adventure-works.com,Bachelors,Professional,90000,2,0
+Aaron,Finch,2000-01-01,M,M,johyun@adventure.com,Bachelors,Professional,90000,2,0
 Eugene,Huang,1976-05-10,S,M,eugene10@adventure-works.com,Bachelors,Professional,60000,3,1
 Ruben,Torres,1971-02-09,M,M,ruben35@adventure-works.com,Bachelors,Professional,60000,3,1
 Christy,Zhu,1973-08-14,S,F,christy12@adventure-works.com,Bachelors,Professional,70000,0,1
@@ -11221,7 +11221,7 @@ Christian,Bryant,1962-08-24,M,M,christian5@adventure-works.com,High School,Profe
 Juha-Pekka,Posti,1962-08-01,M,F,juha-pekka0@adventure-works.com,High School,Professional,60000,2,2
 Brandon,Sharma,1967-12-30,M,M,brandon27@adventure-works.com,High School,Professional,60000,2,2
 Benjamin,Kumar,1968-10-14,M,M,benjamin30@adventure-works.com,High School,Professional,60000,2,2
-Angel,Hill,1963-01-21,M,M,angel36@adventure-works.com,Partial College,Professional,90000,2,1
+Dino,Ryan,2000-01-01,M,M,DR.Ryan@gmail.com,Partial College,Professional,90000,2,1
 Gabrielle,Parker,1962-10-09,M,F,gabrielle51@adventure-works.com,Partial College,Professional,90000,2,1
 Katherine,Alexander,1962-08-31,M,F,katherine45@adventure-works.com,Partial College,Professional,90000,2,1
 Jessica,Murphy,1962-08-31,S,F,jessica8@adventure-works.com,Partial College,Professional,90000,2,1
@@ -18483,3 +18483,9 @@ Nina,Raji,1977-05-06,S,F,nina21@adventure-works.com,Graduate Degree,Clerical,300
 Ivan,Suri,1965-07-04,S,M,ivan0@adventure-works.com,Graduate Degree,Clerical,30000,3,0
 Clayton,Zhang,1964-09-01,M,M,clayton0@adventure-works.com,Bachelors,Clerical,30000,3,0
 Jésus,Navarro,1965-06-06,M,M,jésus9@adventure-works.com,Bachelors,Clerical,30000,0,0
+Neelima,Jackson,1999-01-01,,,n.jackson@adventure.com,,,,,
+Nemo,Finding,1978-01-01,,,n.search@adventure.com,,,,,
+Nemo,Finding,1978-01-01,,,n.search@adventure.com,,,,,
+Dino,Ryan,2000-01-01,,,DR.Ryan@gmail.com,,,,,
+Jan,Ryan,2000-02-02,,,DR.Ryannn@gmail.com,,,,,
+Jan,Ryan,2000-02-02,,,DR.Ryannn@gmail.com,,,,,

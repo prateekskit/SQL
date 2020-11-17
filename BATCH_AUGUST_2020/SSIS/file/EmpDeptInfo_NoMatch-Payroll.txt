@@ -1,0 +1,3 @@
+ID|Name|Gender|Salary|DepartmentName|Location|DeptHead
+4|Todss|FeMale|20000|Payroll|Delhi|Ron
+5|Todd|Male|2800|Payroll|Delhi|Ron

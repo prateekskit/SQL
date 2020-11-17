@@ -13,3 +13,18 @@ ID|Name|Gender|Salary|DepartmentName|Location|DeptHead
 2|Pam|Female|3000|HR|New York|Christie
 31|TERESA|Female|2598|HR|New York|Christie
 33|HAMMOND|Female|2598|HR|New York|Christie
+Gender,Salary,ID,Name,DepartmentName,Location,DepartmentHead
+Male,6500,9,James,,,
+Male,8800,10,Russell,,,
+Male,4500,1,Tom,IT,London,
+Female,53000,3,Malina,IT,London,
+Male,7000,6,Ben,IT,London,
+Female,5500,8,Valarie,IT,London,
+FeMale,20000,4,Todss,Payroll,Delhi,
+Male,2800,5,Todd,Payroll,Delhi,
+Female,2598,30,jeammie,HR,New York,
+Female,2598,29,jeannie,HR,New York,
+Male,54000,7,Sariak,HR,New York,
+Female,3000,2,Pam,HR,New York,
+Female,2598,31,TERESA,HR,New York,
+Female,2598,33,HAMMOND,HR,New York,
