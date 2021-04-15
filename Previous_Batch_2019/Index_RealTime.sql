@@ -1,7 +1,5 @@
 select * from library
-
 drop table library
-
 
 CREATE Table Library (  
 Book_Id int identity (1, 1),  
@@ -34,14 +32,17 @@ END
 
 
   --WITHOUT INDEX
-  select * from Library where book_id = 1
+select * from Library where book_id = 1
 
   -- CLUSTERED INDEX    
-	CREATE CLUSTERED INDEX IX_Index_BookID  ON Library (book_id)  
+CREATE CLUSTERED INDEX IX_Index_BookID  ON Library (book_id)  
 	select * from Library where book_id = 1
   
+  select * from Library where Book_Name = 'SQL SERVER10'
+  alter table library drop index IX_Index_BookNAme
+
   -- Non Clustered
-  CREATE INDEX IX_Index_BookID  ON Library (book_id)  
+  CREATE INDEX IX_Index_BookNAme  ON Library (Book_Name)  
   select * from Library where book_id = 1
 
   DROP INDEX IX_Index_BookID on LIBRARY

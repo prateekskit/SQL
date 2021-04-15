@@ -1,0 +1,10 @@
+EmpID|EmpName|EmpGender|Salary|DepartmentName|Location
+||||IT|London
+||||Payroll|Delhi
+||||HR|New York
+||||Other Department|Sydney
+||||Medical|Uk
+||||Security|
+||||Travel|Oslo
+||||Treasury|Geneva
+||||Treasury|Geneva

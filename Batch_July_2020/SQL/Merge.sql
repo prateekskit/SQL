@@ -1,8 +1,7 @@
 Use JB_07_2020
 
-update studentsource
-set name = 'Mike M'
-where id = 1
+select * from studentsource
+select * from studenttarget
 
 MERGE [TARGET] AS T
 USING [SOURCE] AS S
@@ -13,6 +12,7 @@ USING [SOURCE] AS S
       [INSERT STATEMENT] 
  WHEN NOT MATCHED BY SOURCE THEN
       [DELETE STATEMENT]
+go
 
 
 Create table StudentSource
@@ -37,11 +37,16 @@ Insert into StudentTarget values (1, 'Mike M')
 Insert into StudentTarget values (3, 'John')
 GO
 
+
+select * from studentsource
+select * from studenttarget
+
+
 MERGE StudentTarget AS T
 USING StudentSource AS S
 ON T.ID = S.ID
 WHEN MATCHED THEN
-     UPDATE SET T.NAME = S.NAME
+     UPDATE SET T.NAME = S.NAME   --- 
 WHEN NOT MATCHED BY TARGET THEN
      INSERT (ID, NAME) VALUES(S.ID, S.NAME)
 WHEN NOT MATCHED BY SOURCE THEN

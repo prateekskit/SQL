@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DecemberDemo_2020_1", "DecemberDemo_2020_1\DecemberDemo_2020_1.dtproj", "{110F1396-481C-4429-B4D0-6BFB5DFE5E34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{110F1396-481C-4429-B4D0-6BFB5DFE5E34}.Development|Default.ActiveCfg = Development
+		{110F1396-481C-4429-B4D0-6BFB5DFE5E34}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D20B1986-938C-432A-BE47-12B4C9562092}
+	EndGlobalSection
+EndGlobal

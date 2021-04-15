@@ -12,7 +12,7 @@ drop table library
 
 
 CREATE Table Library (  
-Book_Id int identity (1, 1),  
+Book_Id int identity (1, 1) ,  
 Book_Name varchar(100),  
 Dept varchar(100),  
 Subject_Id int  
@@ -45,12 +45,24 @@ WHILE @Count >= 1 and @Count <= 500000
   --WITHOUT INDEX
   select * from Library where book_id = 1
 
+  select * from Library where LOWER(book_name) = 'SQL SERVER1' and Subject_Id = 1
+  
+  select top 1 * from Library
+
   -- CLUSTERED INDEX    
 	CREATE CLUSTERED INDEX IX_Index_BookID  ON Library (book_id)  
-	select * from Library where book_id = 1
+	--CREATE CLUSTERED INDEX <index_name> ON <table> (<column name>)
+
+ select * from Library where book_id = 1
   
   -- Non Clustered
-  CREATE INDEX IX_Index_BookID  ON Library (book_id)  
+  CREATE INDEX IX_Index_BookNamee  ON Library (book_name,Subject_Id)  
   select * from Library where book_id = 1
 
   DROP INDEX IX_Index_BookID on LIBRARY
+
+  sp_help Library
+
+  select * from tblEmployee
+  where DepartmentId IN (select distinct DepartmentId from tblDepartment)
+

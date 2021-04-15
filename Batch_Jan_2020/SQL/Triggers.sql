@@ -1,31 +1,72 @@
 --TRIGGERS
 -- Create a main table and log/audit table
-
 -- DML TRiggers
 
 CREATE TRIGGER <triggerName>
 ON <table name>   -- mention the existing table
-FOR INSERT        -- mention the operation
+FOR INSERT        -- mention the operation AFTER OR INSTEAD OF
 AS
 BEGIN
-
 /*
  tasks to be performed
-
 */
-
-
 END
 
-
-
-
 select * from tblEmployee
+select * from tblDepartment
+
+ALTER TRIGGER tr_tblEmployeeForInsert
+ON tblEmployee
+FOR INSERT,DELETE
+AS
+BEGIN
+	
+if exists(select * from deleted)
+	begin
+		insert into tblEmp_Audit(id,name,gender,salary,departmentid,operation,inserted_on)
+		select *,'D',getdate() from deleted
+	end
+else 
+	begin
+		insert into tblEmp_Audit(id,name,gender,salary,departmentid,operation,inserted_on)
+		select *,'I',getdate() from inserted
+	end
+END
+
+select * from tblEmp_Audit
+
+ALTER table tblEmp_Audit add operation varchar(10)
+ALTER table tblEmp_Audit add inserted_on datetime
+ALTER table tblEmp_Audit add id_new int identity(1,1)
+
+alter table tblEmp_Audit add constraint df_date default(getdate()) on inserted_on
+
+insert into tblEmployee
+values(22,'Mrs. Ron','Male',5500,5)
+delete from tblEmployee where id = 22
+
+
+
+sp_help tblEmp_Audit
+select * from tblEmployee
+select * from tblemployeeaudit
+
+select * into tblEmp_Audit from tblEmployee
+delete  from tblEmp_Audit
+
+drop table tblEmployeeAudit
+
+insert into tblDepartment
+values(5,'Finance','NYC','Mr. Rick')
+select * from tblEmployee
+insert into tblEmployee
+values(13,'Zia','FeMale',2500,5)
+delete from tblEmployee where id = 13
 
 CREATE TABLE tblEmployeeAudit
 (
   Id int identity(1,1) primary key,
-  AuditData nvarchar(1000)
+  AuditData nvarchar(max)
 )
 select * from tblEmployeeAudit
 

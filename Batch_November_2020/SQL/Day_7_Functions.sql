@@ -1,32 +1,41 @@
 use AdventureWorksDW2017
+
+-- system functions and User defined functions
+
+use AdventureWorksDW2017
 -- functions 
 -- System Functions
 -- Aggregate Functions
-
 -- MAX,MIN,AVG,SUM,COUNT
-select YearlyIncome from DimCustomer
-select count(*) from DimCustomer
----- property of function is that it always returns a value.
-select min(yearlyincome) from DimCustomer
+
+select * from DimCustomer
+
+select sum(yearlyincome) from DimCustomer
+
+select count(*) from DimCustomer  --
+
+select getdate()
+
 --- it may or may not return a value
-select distinct top 15 YearlyIncome from DimCustomer order by YearlyIncome desc
+  --
+
 --  Replace NULL Functions
 -- one way to do it...
 
-use AdventureWorksDW2014
-
+use AdventureWorksDW2017
 select * from DimCustomer where MiddleName is null
-select firstname,case
+
+select firstname, middlename,
+case
 					 when middlename is null then 'xxxxx' 
 						else middlename end as middlenamenew, 
 						lastname from DimCustomer
---- ISNULL (column or expression,'Replacement Values')
+-- IS NULL
 
-select firstname,ISNULL(MiddleName,'MN') as middlenamenew,lastname from DimCustomer
+select firstname,middlename,ISNULL(MiddleName,'xxxxx') as middlenamenew,
+lastname from DimCustomer
 
-select firstname,ISNULL(MiddleName,'MN') as middlenamenew,lastname 
-,FirstName + ''+ISNULL(MiddleName,' ')+''+LastName as 'FullName'
-from DimCustomer
+select ISNULL(
 
 
 Select ISNULL(NULL,'Blank')
@@ -39,46 +48,73 @@ select firstName,ISNULL(middleName,'No Middle NAme'),LastName from DimCustomer
 select firstName+' '+ ISNULL(middleName,'') +' '+ LastName, * from DimCustomer
 
 
-select firstname,MiddleName,coalesce(middleName,'XX'),LastName from dimcustomer
+select middlename,title, coalesce(middlename,title,'XX')
+from DimCustomer
+ where title is not null
+
+select firstname,coalesce(middleName,'XX'),LastName from dimcustomer
 --select firstname,coalesce(   from dimcustomer
-select middlename,title, coalesce(title,middlename,'XX')
-from DimCustomer 
-where title is not null
+
 
 /* String Functions    */
-select EmailAddress,replace(EmailAddress,'@','_EMAIL_') from DimCustomer
 
-select emailaddress,upper(emailaddress) from dimcustomer  -- LOWER()
-select emailaddress,LEN(emailaddress) from dimcustomer  -- LOWER()
-SELECT 
-select 'MrABC       ' + '__' + 'XX'
-select RTRIM('MrABC       ') + '__' + 'XX'
+select * from DimCustomer
+
+dimcustomer
+select emailaddress, UPPER(emailaddress) from dimcustomer
+select emailaddress, LOWER(emailaddress), LEN(emailaddress) from dimcustomer
+
+--TRIM 
+
 select 'HELLo'
+select TRIM('                                  HELLO                                   ')
+select ('                                  HELLO                                   ')
 select LEN(RTRIM('HELLO                             '))
-select LTRIM('                 HELLO')
+select RTRIM('HELLO                             ')
 select ('HELLO                             ')   -- show output in notepad for more undestanding
 
-select LEN('HELLO')
+select ('                                      jasnbask')
+select LTRIM('                                      jasnbask')
 
-select REPLACE(
+
+select LEN('HELLO TEAM')
+
 
 select firstname, LEN(firstname) from dimcustomer
 select firstname, LEN(EmailAddress),EmailAddress from dimcustomer  --- very important when doing calculation over the length of string
 select firstname,upper(REVERSE(firstname)) from DimCustomer
 
-select LEFT('janbask',6)
-select RIGHT('janbask',4)
 
+
+select LEFT('janbask',6)
+select LEFT('My name is Janbask',10)
+select RIGHT('My name is Janbask',10)
+
+select EmailAddress, CHARINDEX('@',EmailAddress) from DimCustomer
+
+
+select * from DimCustomer
 
 select EmailAddress from DimCustomer
+select CHARINDEX('a','abcdefha')
+select emailaddress,CHARINDEX('@',emailaddress) from DimCustomer
+select charindex('@','jessica29@adventure-works.com')
 
-select  CHARINDEX('@','I am janb@new@sk@xxx',
-			CHARINDEX('@','I am janb@new@sk@xxx')+1)
+select emailaddress,
+				LEFT(emailaddress,CHARINDEX('@',emailaddress) - 1) from DimCustomer
 
-select emailaddress, LEFT(emailaddress,CHARINDEX('@',emailaddress) - 1) 
-		from DimCustomer
 
+				select emailaddress,
+				LEFT(emailaddress,CHARINDEX('@',emailaddress) - 1 ) from DimCustomer
+
+
+--jon24@adventure-works.com  
+--123456
+
+select * from DimCustomer 
 select SUBSTRING('janbask',2,4)
+select SUBSTRING(customerAlternatekey,3,7) from DimCustomer
+
 
 select * from DimCustomer where LEN(firstname) > 5
 
@@ -90,12 +126,13 @@ select * from DimCustomer where LEN(firstname) > 5
 --- jon24@gmail.com     ---------     len(email) = 15 
 ----- index (@) =--- 6 
 ----- 15 -6 = 9
-select EmailAddress from DimCustomer
+select EmailAddress,replace(emailaddress,substring(emailaddress,2,5)
+					,'***') from DimCustomer
 
 
-select emailaddress,
-		substring(emailaddress,	CHARINDEX('@',emailaddress,1)+1, 
-								(len(emailaddress)- CHARINDEX('@',emailaddress,1))) as substrings
+select emailaddress, substring(emailaddress,
+									CHARINDEX('@',emailaddress,1)+1, 
+												(len(emailaddress)- CHARINDEX('@',emailaddress,1))) as substrings
 										   from DimCustomer where emailaddress like '%gmail%'
 
 select '' substring('prateek@gmail.com',
@@ -105,7 +142,10 @@ select '' substring('prateek@gmail.com',
 							select CHARINDEX('@','prateek@gmail.com',1) --8
 							select len('prateek@gmail.com')    -- 17
 
-
+select emailaddress, substring(emailaddress,
+			CHARINDEX('@',emailaddress,1) + 1, 
+(len(emailaddress)- CHARINDEX('@',emailaddress,1) - CHARINDEX('.', REVERSE(EmailAddress) ))) 
+as substrings   from DimCustomer 
 
 select substring('prateek@gmail.com',9,9)
 
@@ -113,11 +153,14 @@ select * from DimCustomer
 update DimCustomer
 set EmailAddress = 'prateek@gmail.com'
 where CustomerKey = 11000
+
+
+										   
 										   
 CHARINDEX('@',emailaddress,1) from DimCustomer
 
+use JB_Nov_11
 /* DATE-TIME FUNCTIONS */
-use db_2
 
 CREATE TABLE [tblDateTime]
 (
@@ -129,39 +172,40 @@ CREATE TABLE [tblDateTime]
  [c_datetimeoffset] [datetimeoffset](7) NULL
 )
 
+
 select * from tblDateTime
 select getdate()
 
-select CAST((100.20/9) as decimal(18,2))
-select CAST(1 as varchar) + ' - ' +'Janbask'
-
-
-INSERT INTO tblDateTime
-VALUES (GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE())
+INSERT INTO tblDateTime VALUES(GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE())
 select * from tblDateTime
 
-SELECT ISDATE('pragim') -- whether valid date or not  0 - false/invalid
+--ISDATE --- 
+
+SELECT ISDATE('pragim')		-- whether valid date or not  0 - false/invalid
 SELECT ISDATE('2014-04-04') -- whether valid date or not 1- true/valid
 SELECT ISDATE('2014-13-13') -- whether valid date or not 1- true/valid
-
-
-SELECT DAY(getdate())
+SELECT ISDATE('2014-11-31') -- whether valid date or not 1- true/valid
 
 select DAY(getdate()),getdate()   --- provides you the current date  
 select month(getdate()),getdate() -- provide you current month
-select year(getdate())
+select year(getdate()),getdate()
 
-select * from DimCustomer
 use AdventureWorksDW2017
-select YEAR(birthdate),birthdate from DimCustomer where year(birthdate) > 1980
+select * from DimCustomer
+
+select YEAR(birthdate),birthdate from DimCustomer where year(birthdate) <= 1980
 
 
-select datepart(dw,getdate()),getdate()  -- specicifc date part
-select datepart(ww,getdate()),getdate()  -- specicifc date part
+select datepart(day,'2020-08-30')
+
+select datepart(dy,getdate())
+select datepart(ww,getdate())
+
+select datepart(dy,getdate()),getdate()  -- specicifc date part
+select datepart(,getdate())  -- specicifc date part, quarter of date
 
 select datename(weekday,getdate())
-select datename(day,getdate())
-select datename(day,getdate())
+select datename(MONTH,getdate())
 
 
 select firstname,birthdate,day(birthdate) as day,Month(birthdate) as month, 
@@ -170,21 +214,26 @@ year(birthdate) as year,datepart(WEEKDAY,birthdate) as wday,
 --DATEADD and dATEDIFF
 -- calculate age and after 10 years what would be there age
 
-select * from DimCustomer
 
-select DATEADD(year,-10,getdate())
-select DATEADD(month,-10,getdate())
-select DATEADD(day,-10,getdate())
+select datediff(week,getdate(),'2030-01-01')
 
-select datediff(day,getdate(),'2020-12-12')
-select datediff(year,getdate(),'2020-12-12')
+select datediff(YEAR,getdate(),'2009-07-01')   --- date difference 
+select datediff(WEEK,getdate(),'2030-01-01')
+
+select DateFirstPurchase,DATEADD(day,7,DateFirstPurchase)  from DimCustomer
+
+select dateadd(day,90,getdate())
+select dateadd(year,-180,getdate())
 
 select firstname,lastname,birthdate from DimCustomer
 
 --- calcualte AGE , and AGE after 10 years
 select firstname,lastname,birthdate,
+			---- AGE as of today
 			datediff(year,birthdate,getdate()) as age,
+			---- what would be the date after 10 years.
 			dateadd(year,10,getdate()) as tenyrsnw,
+			----- what would be the age after 10 years.
     datediff(year,birthdate,dateadd(year,10,getdate())) as tenyrsafter_AGE 
 	from dimcustomer order by age desc
 
@@ -195,75 +244,64 @@ use db_2
 
 select * from tblemp
 
-use JB_2021
 
-update tblEmployee
-set salary = 4800
-where id = 4
-select * from tblEmployee
+use JB_08_2020
 
-select *, ROW_NUMBER() over (order by salary desc) as rownumber 
+use JB_Nov_11
+select * from tblemp order by salary desc
+
+--  ROW_NUMBER() OVER(order by salary desc)
+select *,
+	ROW_NUMBER() OVER(partition by Gender order by salary desc) as 'row number',
+	RANK() OVER(partition by Gender order by salary desc) as 'rank_1',
+	DENSE_RANK() OVER(partition by Gender order by salary desc) as 'dense_rank_2'	
+from tblemp
+order by Gender
+
+
+use AdventureWorksDW2017
+
+select * from FactInternetSales order by CustomerKey
+
+select customerkey,FirstName,LastName,DateFirstPurchase, englishoccupation from DimCustomer order by englishoccupation
+
+			select * from
+            (select customerkey,FirstName,LastName,DateFirstPurchase, englishoccupation,
+			DENSE_RANK() OVER(partition by englishoccupation order by DatefirstPurchase desc) as 'row number' from DimCustomer 
+			) AS t
+			where [row number] IN (27,28)
+
+
+			select distinct englishoccupation from DimCustomer
+			
+
+
+
+UPDATE tblEmployee set salary = 4500 where id = 1
+
+
+--ROW_NUMBER , RANK, DENSE_RANK
+
+
+
+
+
+select *,
+	ROW_NUMBER() OVER(order by salary desc) as 'row number',
+	RANK() OVER(order by salary desc) as 'rank_1',
+	DENSE_RANK() OVER(order by salary desc) as 'dense_rank_2'	
 	from tblEmployee
 
-select *, RANK() over (order by salary desc) as rankk
-	from tblEmployee
-
-select *, DENSE_RANK() over (order by salary desc) as rankk
-from tblEmployee
-
-select *, ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
-from tblEmployee
-
-
-SELECT *
-		FROM(
-			select *, 
-			ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
-			From tblEmployee
-			) AS T
-WHERE rownumber IN (1,2,3)
-
------ CTE -- common table expressions
-
-with CTE_new(employee_id,employee_name,GENDER,Emumeration,depart_id,ranking)
-AS
-(
-	select *, 
-			ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
-			From tblEmployee
-
-),
- CTE_neww(employee_id,employee_name,GENDER,Emumeration,depart_id,ranking)
-AS
-(
-	select *, 
-			ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
-			From tblEmployee
-
-)
-
-select * from CTE_NEW inner join CTE_neww
-	where CTE_NEW.ranking = 1
-
-
-
-
-
-
-
-select * from tblEmployee
-	where DepartmentId IN (select id from tblDepartment)
-
-select id,name,gender,salary, 
-	(select DepartmentName from tblDepartment where id = DepartmentId) as 'deptname'
-	   from tblEmployee
-
+	delete from tblEmployee where id = 11
+	select * from tblEmployee
 select *, ROW_NUMBER() over (partition by gender order by salary desc) as rownumber 
 ,rank() over(partition by gender order by salary desc) as rank_original
 ,DENSE_RANK() over (partition by gender order by salary desc) as rank_dense
-from tblemp
+from tblemployee
 
 select * from DimCustomer
+
+
 select id,gender,count(*) from tblemp group by gender,id
 
 --ROW_NUMBER()---
