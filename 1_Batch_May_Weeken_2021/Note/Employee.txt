@@ -1,0 +1,16 @@
+ID|Name|Gender|Salary|DepartmentId
+1|Tom|Male|4000|1
+2|Pam|Female|3000|3
+3|John|Male|3500|1
+4|Sam|Male|4500|2
+5|Todd|Male|2800|2
+6|Ben|Male|7000|1
+7|Sara|Female|4800|3
+8|Valarie|Female|5500|1
+9|James|Male|6500|
+10|Jack|Male|8800|
+11|Jack|Female|5500|3
+12|Sara J|Female|2000|2
+13|JCena|Female|2500|3
+14|MCena|Female|2500|3
+15|Raj|Female|2000|

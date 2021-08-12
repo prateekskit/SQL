@@ -1,0 +1,2 @@
+CustomerKey|FirstName|LastName|BirthDate|MaritalStatus|Gender|YearlyIncome|EnglishEducation|EnglishOccupation|NumberCarsOwned|Order_Count|SalesAmount
+29484|||||||||||

@@ -1,0 +1,43 @@
+Week - 1
+Installation
+Import Database
+SQL BASICS - DDL & DML
+WHERE OPERATIONS & LIKE ,ARTHIMETIC operators, 
+ORDER BY
+DELETE vs TRUNCATE
+
+
+WEEK - 2
+DISTINCT & TOP CLAUSE
+CASE STATEMENTS , IIF CLAUSE
+GROUP BY & HAVING
+Execution Order of the Query 
+CONSTRAINT - NULL,CHECK,DEFAULT
+PK & FK
+IDENTITY PROPERTY
+
+
+
+WEEK-3
+JOINS
+SET OPERATIONS
+SUB-QUERIES 
+FUNCTIONS --- UDF & SDF
+
+
+Week -4 
+
+Temp Tables
+CTE
+If-ELSe and WHILE
+Procedures 
+Views
+Transaction 
+Triggers 
+Index
+
+
+
+
+
+
