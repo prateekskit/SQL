@@ -157,6 +157,8 @@ select * from dimcustomer_Bakcup where firstname  not like '%S' AND  firstname n
 ----- First Name should always have "S" at the second position 
 select * from dimcustomer_Bakcup where firstname   like '_S%'
 
+select * from dimcustomer_Bakcup where firstname   like '__k%'
+
 
 ----- First Name should always have "S" at the third position 
 select * from dimcustomer_Bakcup where firstname   like '__S%'
@@ -165,20 +167,32 @@ select * from dimcustomer_Bakcup where firstname   like '__S%'
 ----- First Name should always have "S" at the first position & "A" at the third position
 select * from dimcustomer_Bakcup where firstname   like 'S_A%'
 
+select * from dimcustomer_Bakcup where AddressLine1   like '%Sun View%'
+
+
+
+
 ----- First Name should always have "A" at the second position & "N" at the last position
 select * from dimcustomer_Bakcup where firstname   like '_A%N'
 
 
 --- first name should either starts with Y or Z
 select * from dimcustomer_Bakcup where firstname   like '[YZ]%'
+--- first name should either starts with B or Y or Z
+select * from dimcustomer_Bakcup where firstname   like '[BYZ]%'
 -- should not ends up with K & N
 select * from dimcustomer_Bakcup where firstname  not  like '%[KN]'
+select * from dimcustomer_Bakcup where firstname   like '%[KN]'
 
 -- should start with Either A OR B OR C OR D Or E Or F OR G
 select * from dimcustomer_Bakcup where firstname  like '[A-G]%'
+--is similar to below
+select * from dimcustomer_Bakcup where firstname  like '[ABCDEFG]%'
 
 -- should NOT start with Either A OR B OR C OR D Or E Or F OR G
 select * from dimcustomer_Bakcup where firstname  like '[^A-G]%'
+select * from dimcustomer_Bakcup where firstname  not like '[A-G]%'
+select * from dimcustomer_Bakcup where firstname  like '[H-Z]%'
 
 select lastname,firstname,MiddleName
  from dimcustomer_Bakcup where firstname  like 'A%' and lastname like '%A' 
