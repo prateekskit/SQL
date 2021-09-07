@@ -113,39 +113,3 @@ INSERT INTO tblDateTime
 VALUES (GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE(),GETDATE())
 
 select * from tblDateTime
-
-
----  date time functions
--- 0 false , 1 - true
-select ISDATE(NULL)
-select ISDATE('2020-03-03')
-select ISDATE('2020-03-31')
-select ISDATE('2020-03-32')
-select ISDATE('2020-02-29')
-select ISDATE('2021-02-29')
-
---- DAY,MONTH, YEAR
-
-select DAY(getdate())
-select MONTH(getdate())
-select YEAR(getdate())
-
-select * from DimCustomer
-select * from DimCustomer where year(birthdate) > 1985
-
-select datepart(day,getdate())
-select datepart(MONTH,getdate())
-select datepart(YEAR,getdate())
-
-select datepart(Q,getdate())
-select datepart(WEEKDAY,getdate())
-select datepart(WEEK,getdate())
-select datepart(M,getdate())
-
-select datepart(M,'2020-03-03')
-
-select year(birthdate) from DimCustomer where year(birthdate) > 1985
-
-
-select DAY(getdate()) + 'abc'
-select datename(day,getdate()) + 'abc'
